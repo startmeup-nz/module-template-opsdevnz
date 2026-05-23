@@ -1,7 +1,8 @@
 # OpsDev.nz Module Template
 
-**Private practice repo.** This is a test bed for the OpsDev.nz module template.
-When proven, this pattern will be applied to production modules.
+The standard starting point for every OpsDev.nz Python module — CI, automated
+PyPI publishing, dependency scanning, and a clean project scaffold under
+Apache-2.0. Clone it, rename the placeholders, and start building.
 
 ## Using this template
 
