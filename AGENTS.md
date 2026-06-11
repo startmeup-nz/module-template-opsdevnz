@@ -55,9 +55,16 @@ uv run python -m pytest tests/test_<name>.py -v
 - **0.1.0** — First public release, API stabilises
 - **1.0.0** — Stable release, semantic versioning enforced
 
-## Current Focus
+## Finding Current Work
 
-- <current development priorities — 3-4 bullet points>
+This is a GitHub repository. To understand what work is in progress or planned:
+
+1. **Check open issues:** `gh issue list` or visit the Issues tab
+2. **Check open PRs:** `gh pr list` or visit the Pull Requests tab
+3. **Review documentation:** Read `docs/` for specifications, design decisions, and user stories
+4. **Check milestones:** `gh api repos/{owner}/{repo}/milestones` for planned releases
+
+Work items are tracked via GitHub issues and pull requests, not in this file.
 
 ## Related
 

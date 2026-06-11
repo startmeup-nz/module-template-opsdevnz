@@ -4,7 +4,7 @@
 
 - **Status:** Development
 - **License:** Apache 2.0
-- **Python:** 3.10+
+- **Python:** 3.12+
 
 ## Overview
 
