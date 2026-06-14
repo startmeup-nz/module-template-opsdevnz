@@ -6,8 +6,9 @@
 ---
 
 > Replace this section with the module's functional requirements.
-> Use FR-IDs with verification traceability. See the SRS-Template at
-> `vendor/SRS-Template/srs-template.md` for guidance on requirement structure.
+> Use FR-IDs with verification traceability.  See the
+> [SRS-Template](https://github.com/john-opsdevnz/SRS-Template/blob/master/srs-template.md)
+> for guidance on requirement structure.
 
 ## FR-1: <First Functional Area>
 

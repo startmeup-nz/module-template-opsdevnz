@@ -7,7 +7,8 @@
 ---
 
 > Replace this section with the module's non-functional requirements.
-> See `vendor/SRS-Template/srs-template.md` Section 3.3 (Quality of Service)
+> See [SRS Template Section 3.3 (Quality of
+> Service)](https://github.com/john-opsdevnz/SRS-Template/blob/master/srs-template.md#33-quality-of-service)
 > for guidance on NFR areas: performance, security, reliability, availability,
 > observability, maintainability.
 
