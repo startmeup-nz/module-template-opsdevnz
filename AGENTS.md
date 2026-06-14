@@ -6,7 +6,18 @@
 
 AI assistants must NOT commit changes to this repository. Always stage changes
 and describe what was done, then wait for human review and confirmation before
-committing. This ensures all changes have human oversight.
+committing.
+
+**Why:** All commits must be signed by a human using an SSH or GPG key.
+The key should be associated with an email address that identifies a human
+contributor. This establishes accountability for every change and protects
+the project's supply chain. An AI may draft the code, but a human must
+review the final change, sign the commit, and take responsibility for
+what ships.
+
+**AI-authored code is welcome.** Draft, refactor, suggest, review — all of that
+is encouraged. The human's role is to review the final change, sign the commit,
+and take responsibility for what ships.
 
 ## Module Scope
 

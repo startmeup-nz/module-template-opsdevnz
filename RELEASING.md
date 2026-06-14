@@ -9,7 +9,7 @@ or managed — pushing a version tag triggers the pipeline.
 | What | Rule |
 |------|------|
 | Versioning | [Semantic Versioning](https://semver.org) |
-| Tag format | `v<version>` (e.g. `v0.1.0`) |
+| Tag format | `v<version>` (e.g. `v0.1.0`) — must be signed (`git tag -s`) |
 | Branch | `main` only — tags must point at a commit on `main` |
 | Auth | Trusted Publishing (OIDC) — no API tokens |
 
