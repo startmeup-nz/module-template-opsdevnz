@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "YOUR-MODULE-opsdevnz"
-version = "0.0.2"
+version = "0.0.3"
 description = "Description of what this module does"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -28,6 +28,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "build>=1.2.1",
     "pytest>=7.0",
     "pytest-cov>=4.0",
     "ruff>=0.4",
