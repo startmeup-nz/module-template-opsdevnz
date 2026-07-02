@@ -36,10 +36,10 @@
 
 ### NFR-3.1: Python Version Support
 
-**Requirement:** The module MUST support Python 3.10 through 3.14.
+**Requirement:** The module MUST support Python 3.12 through 3.14.
 
-**Rationale:** Python 3.10 is the minimum for modern type syntax. Python 3.14
-is the current latest. CI should test the full supported range.
+**Rationale:** Python 3.12 is the minimum (required for `tomllib` in stdlib).
+Python 3.14 is the current latest. CI should test the full supported range.
 
 ---
 
