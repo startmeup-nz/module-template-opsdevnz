@@ -1,0 +1,50 @@
+#!/bin/sh
+# pre-push: fail if `uv lock --upgrade` would change anything.
+# Run `uv lock --upgrade && uv sync` and commit, then push again.
+# Mechanics: run `uv lock --upgrade` on a copy, diff against the original,
+# and fail (or pass) based on whether it rewrote anything. The lockfile on
+# disk is never left modified by this check.
+
+set -u
+
+# Opt-out path so a missing uv install doesn't hard-block pushes entirely
+if ! command -v uv >/dev/null 2>&1; then
+    echo "pre-push: uv not found, skipping upgrade check."
+    exit 0
+fi
+
+lockfile="uv.lock"
+# The backup lets us check for upgrades without keeping any changes:
+# `uv lock --upgrade` rewrites uv.lock in place, so we snapshot it first
+# and restore from the backup afterwards on any failure/block.
+backup="$PWD/.uv.lock.prepush-backup"
+
+# Snapshot the current lockfile — this is the "before" picture we diff against.
+cp "$lockfile" "$backup" || exit 1
+
+if ! uv lock --upgrade >/dev/null 2>&1; then
+    # uv lock --upgrade failed partway — restore the untouched original
+    mv "$backup" "$lockfile"
+    echo "pre-push: uv lock --upgrade failed, resolve manually."
+    exit 1
+fi
+
+# Only fail if the fresh resolution came out different — that's exactly
+# what "there's an upgrade pending" means in lockfile-speak. Restore first.
+if ! diff -q "$backup" "$lockfile" >/dev/null 2>&1; then
+    mv "$backup" "$lockfile"   # restore; keep the working tree clean
+    echo ""
+    echo "pre-push: DEPENDENCIES NOT UP TO DATE."
+    echo "  'uv lock --upgrade' would change uv.lock. Run:"
+    echo ""
+    echo "    uv lock --upgrade && uv sync"
+    echo ""
+    echo "  commit the result, then push again."
+    exit 1
+fi
+
+# Cleanup: at this point the diff was empty, so keep the backup copy
+# from piling up on every successful push.
+rm -f "$backup"
+echo "pre-push: deps are at latest stable, push allowed."
+exit 0

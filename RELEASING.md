@@ -13,6 +13,14 @@ or managed — pushing a version tag triggers the pipeline.
 | Branch | `main` only — tags must point at a commit on `main` |
 | Auth | Trusted Publishing (OIDC) — no API tokens |
 
+**When to tag:** pushing a `v*` tag fires `publish.yml`, which publishes the
+package named in `pyproject.toml`
+(`name = "YOUR-MODULE-opsdevnz"`). Until that placeholder is replaced with
+the real package name, do **not** cut release tags — the pipeline would
+publish (or attempt to publish) the placeholder. Once instantiated with a
+real name, the workflow below applies as written. Template-only maintenance
+is tracked by version bumps on `main` (no tags, no publish).
+
 ## Prerequisites
 
 - `uv` installed
