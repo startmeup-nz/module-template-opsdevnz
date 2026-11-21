@@ -12,6 +12,24 @@ pip install -e .[dev]
 
 We keep tooling in `pyproject.toml`, so editable installs are enough for tests and packaging.
 
+Prefer `uv` when available: `uv sync` creates the venv and keeps `uv.lock`
+consistent (this repo carries a `uv.lock`).
+
+### Dependency freshness gate (pre-push hook)
+
+Every push runs a `pre-push` hook that fails if dependencies would change
+under `uv lock --upgrade`. This keeps `uv.lock` at the latest stable upstream
+versions instead of drifting behind. After a clone, activate it once:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+If a push is blocked, run `uv lock --upgrade && uv sync`, commit the updated
+`uv.lock`, and push again. On failure the hook restores `uv.lock`, so the
+working tree stays clean. (`core.hooksPath` is local config — repeat the
+one-liner in each fresh clone.)
+
 ## Common Tasks
 
 | Task      | Command                                     |

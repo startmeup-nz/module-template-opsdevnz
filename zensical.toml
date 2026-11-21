@@ -21,11 +21,12 @@ nav = [
   { "User Stories" = "stories/README.md" },
 ]
 
-language = "en"
-
 # ----------------------------------------------------------------------------
 # Theme Configuration
 # ----------------------------------------------------------------------------
+# NOTE (Zensical 0.1.x): theme-level settings like "language" and "features"
+# belong here under [project.theme] — they are NOT recognised at the top
+# level or directly under [project] (Zensical warns and ignores them).
 [project.theme]
 language = "en"
 

@@ -34,6 +34,20 @@ AI assistants MAY:
 - Edit `zensical.toml` configuration
 - Edit markdown files under `docs/`
 
+**Zensical 0.1.x config schema note:** theme-level settings (`language`,
+`features`, palette) belong under `[project.theme]` — they are not
+recognised at the top level or directly under `[project]` (Zensical warns
+and silently ignores them). Keep `zensical.toml` structured accordingly.
+
+## Dependency Freshness Gate
+
+This repo carries the pre-push `uv.lock` freshness hook in `.githooks/`
+(see CONTRIBUTING.md). Activate per clone with
+`git config core.hooksPath .githooks`. Assistants refreshing dependencies
+should run `uv lock --upgrade && uv sync` and commit the updated `uv.lock`
+with the human's delegation, rather than waiting for the hook to block a
+push.
+
 ## Development Workflow
 
 ```bash
